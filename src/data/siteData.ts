@@ -54,6 +54,19 @@ export interface AudienceProfile {
   benchmarkRoas: string;
 }
 
+export interface BlogComparisonColumn {
+  title: string;
+  pros: string[];
+  cons: string[];
+}
+
+export interface BlogSection {
+  heading?: string;
+  paragraphs?: string[];
+  bullets?: string[];
+  comparison?: BlogComparisonColumn[];
+}
+
 export interface BlogPost {
   id: string;
   title: string;
@@ -62,6 +75,7 @@ export interface BlogPost {
   publishedDate: string;
   summary: string;
   content: string[];
+  sections?: BlogSection[];
   takeaways: string[];
 }
 
@@ -444,6 +458,187 @@ export const CASE_STUDIES: CaseStudy[] = [
 ];
 
 export const BLOG_POSTS: BlogPost[] = [
+  {
+    id: 'scale-online-store-facebook-ads-australia-2025',
+    title:
+      'How to Scale Your Online Store With Facebook Ads in Australia: The Strategy Top Ecommerce Brands Are Using in 2025',
+    category: 'Meta Ads',
+    readTime: '9 min read',
+    publishedDate: '2025 Strategy Guide',
+    summary:
+      'How forward-thinking Australian online stores combine Meta Advantage+ structures with AI Video Ads to defeat creative fatigue and scale ROAS profitably.',
+    content: [
+      "If you're running an online store in Australia, you've probably noticed that Facebook advertising is more competitive than ever. Rising acquisition costs, shorter attention spans, and constant algorithm updates make it harder to scale profitably. Yet some brands continue to grow month after month while others struggle to break even.",
+      "The difference isn't simply bigger budgets. The brands winning today are combining proven Facebook Ads Ecommerce Australia strategies with modern creative systems powered by artificial intelligence.",
+      "Here's how to build a scalable growth engine that drives consistent revenue and why forward-thinking brands are moving toward AI Video Ads instead of relying solely on traditional production methods.",
+    ],
+    sections: [
+      {
+        heading: 'The Real Challenge of Scaling Ecommerce',
+        paragraphs: [
+          'Many store owners assume that scaling means increasing ad spend.',
+          "In reality, scaling means maintaining or improving your return on ad spend (ROAS) while increasing revenue. The biggest obstacle isn't usually targeting. It's creative fatigue.",
+          'When the same ad is shown repeatedly, performance drops. Click-through rates decline, acquisition costs increase, and growth stalls.',
+          'This is why successful brands invest heavily in fresh creative. However, traditional content production often becomes a bottleneck.',
+        ],
+      },
+      {
+        heading: 'Why Creative Is the Growth Lever Behind Facebook Ads',
+        paragraphs: [
+          "Facebook's algorithm has become increasingly automated. Audience targeting, placements, and bid optimization are now largely managed by Meta's machine learning systems.",
+          'As a result, creative assets have become one of the most important variables influencing performance.',
+          'The best-performing advertisers consistently test:',
+        ],
+        bullets: [
+          'Multiple video variations',
+          'Different hooks and opening scenes',
+          'User-generated content formats',
+          'Product demonstrations',
+          'Customer testimonials',
+          'Offer-driven creatives',
+        ],
+      },
+      {
+        paragraphs: ['The challenge is producing enough content quickly and cost-effectively.'],
+      },
+      {
+        heading: 'AI Video Ads Are Changing the Ecommerce Landscape',
+        paragraphs: [
+          'Modern AI Video Ads allow brands to create high-converting video creative at a fraction of the time and cost of traditional production.',
+          'Instead of organizing expensive shoots, hiring talent, coordinating locations, and waiting weeks for editing, AI-powered video systems can generate professional ad creatives in days or even hours.',
+          'Benefits include:',
+        ],
+        bullets: [
+          'Faster creative testing cycles',
+          'Lower production costs',
+          'More ad variations for split testing',
+          'Easier localisation for Australian audiences',
+          'Consistent content production at scale',
+        ],
+      },
+      {
+        paragraphs: [
+          'For ecommerce brands running Facebook campaigns, this creates a significant competitive advantage. More creative testing generally leads to faster optimisation and higher-performing campaigns.',
+        ],
+      },
+      {
+        heading: 'AI Ads vs Traditional Video Production: Which Delivers Better ROI?',
+        paragraphs: [
+          "The discussion around AI Ads vs Traditional Video Production isn't about replacing professional filmmaking entirely.",
+          'Luxury brands launching major campaigns may still require large-scale productions. However, for performance marketing and day-to-day customer acquisition, traditional production often struggles to keep pace with modern advertising demands.',
+        ],
+        comparison: [
+          {
+            title: 'Traditional Video Production',
+            pros: [
+              'High-end production quality',
+              'Strong brand storytelling',
+              'Ideal for large brand campaigns',
+            ],
+            cons: [
+              'Expensive production costs',
+              'Longer turnaround times',
+              'Limited creative variations',
+              'Difficult to test at scale',
+            ],
+          },
+          {
+            title: 'AI-Powered Advertising Creative',
+            pros: [
+              'Rapid content creation',
+              'Cost-effective production',
+              'Unlimited creative iterations',
+              'Faster testing and optimisation',
+            ],
+            cons: [
+              'Requires strategic creative direction',
+              'Not every campaign benefits from full automation',
+            ],
+          },
+        ],
+      },
+      {
+        paragraphs: [
+          'For most ecommerce businesses focused on growth, AI-powered creative offers significantly greater agility and scalability.',
+        ],
+      },
+      {
+        heading: 'What About Luxury Brands?',
+        paragraphs: [
+          'Many business owners assume AI-generated advertising is only suitable for budget products. The opposite is becoming true.',
+          'Today, leading agencies are using AI to create sophisticated luxury brand ads that maintain premium brand positioning while improving creative output.',
+          'Luxury consumers still respond to compelling storytelling, exclusivity, and aspirational imagery. AI simply provides a more efficient way to produce and test those creative concepts.',
+          "The key is ensuring that creative quality remains aligned with the brand's identity and customer expectations.",
+        ],
+      },
+      {
+        heading: 'The Ecommerce Growth Strategy Australian Brands Should Follow',
+        paragraphs: [
+          'A successful ecommerce growth strategy Australia businesses can implement usually follows four stages:',
+        ],
+      },
+      {
+        heading: '1. Build a Strong Creative Testing System',
+        paragraphs: ['Launch multiple creative concepts simultaneously. Test:'],
+        bullets: [
+          'Different offers',
+          'Different messaging angles',
+          'Different video lengths',
+          'Different audience pain points',
+        ],
+      },
+      {
+        paragraphs: ['The goal is discovering winning creative combinations quickly.'],
+      },
+      {
+        heading: "2. Use Facebook's Automation Features",
+        paragraphs: [
+          "Meta's Advantage+ Shopping Campaigns help advertisers leverage machine learning for audience optimisation.",
+          'Combine strong creative with automated campaign structures for improved scalability.',
+        ],
+      },
+      {
+        heading: '3. Prioritise First-Party Data',
+        paragraphs: [
+          'As privacy regulations continue evolving, customer data becomes increasingly valuable. Focus on:',
+        ],
+        bullets: [
+          'Email list growth',
+          'SMS marketing',
+          'Repeat purchase campaigns',
+          'Customer retention strategies',
+        ],
+      },
+      {
+        heading: '4. Scale Winners Aggressively',
+        paragraphs: [
+          'Once a creative consistently performs, increase budget gradually while continuing to test new variations.',
+          'This prevents creative fatigue and helps maintain long-term profitability.',
+        ],
+      },
+      {
+        heading: 'Why Frame & Funnel Is Different',
+        paragraphs: [
+          "At Frame & Funnel, we understand that ecommerce growth isn't just about running ads. It's about creating a repeatable system for acquiring customers profitably.",
+          'We help brands combine advanced Facebook advertising strategies with high-performing AI-generated creative that delivers results faster and more efficiently than traditional production models alone.',
+          "Whether you're launching a new product, scaling an established store, or looking for a smarter alternative to expensive video shoots, our team helps you build a creative engine designed for sustainable growth.",
+        ],
+      },
+      {
+        heading: 'Ready to Scale Your Online Store?',
+        paragraphs: [
+          'The future of ecommerce advertising belongs to brands that can create, test, and optimise content faster than their competitors.',
+          'By combining AI Video Ads, strategic Facebook advertising, and a proven ecommerce growth strategy Australia businesses can trust, online stores can achieve scalable growth without the limitations of traditional production workflows.',
+          "If you're ready to improve your Facebook Ads Ecommerce Australia performance and discover whether AI Ads vs Traditional Video Production is the right fit for your business, Frame & Funnel can help you build a strategy that drives measurable results.",
+        ],
+      },
+    ],
+    takeaways: [
+      'Scaling is limited by creative fatigue—not targeting—so testing velocity is the core lever.',
+      'Combine Meta Advantage+ automation with rapid AI Video Ad variations and first-party retention.',
+      'Luxury positioning and AI creative pair seamlessly when guided by director-level creative strategy.',
+    ],
+  },
   {
     id: 'creative-fatigue-formula',
     title: 'The Creative Fatigue Formula: Why Your ROAS Collapses After Day 14',

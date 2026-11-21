@@ -138,10 +138,82 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onOpenAudit, onOpenCalendly 
             </div>
 
             {/* Article Content */}
-            <div className="space-y-5 text-sm text-neutral-300 leading-relaxed font-sans border-t border-[#1c1c24] pt-6">
+            <div className="space-y-6 text-sm text-neutral-300 leading-relaxed font-sans border-t border-[#1c1c24] pt-6">
               {readingPost.content.map((paragraph, idx) => (
                 <p key={idx}>{paragraph}</p>
               ))}
+
+              {readingPost.sections &&
+                readingPost.sections.map((section, sIdx) => (
+                  <div key={sIdx} className="space-y-3 pt-2">
+                    {section.heading && (
+                      <h2 className="text-lg sm:text-xl font-display font-bold text-white tracking-tight pt-3">
+                        {section.heading}
+                      </h2>
+                    )}
+
+                    {section.paragraphs &&
+                      section.paragraphs.map((p, pIdx) => <p key={pIdx}>{p}</p>)}
+
+                    {section.bullets && (
+                      <ul className="space-y-1.5 pl-2 text-neutral-200">
+                        {section.bullets.map((b, bIdx) => (
+                          <li key={bIdx} className="flex items-start gap-2.5 text-sm">
+                            <span className="text-neutral-500 font-mono text-xs mt-1">&mdash;</span>
+                            <span>{b}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
+                    {section.comparison && (
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                        {section.comparison.map((col, cIdx) => (
+                          <div
+                            key={cIdx}
+                            className={`p-5 border ${
+                              cIdx === 1
+                                ? 'bg-[#12121a] border-white/25'
+                                : 'bg-[#09090d] border-[#202028]'
+                            }`}
+                          >
+                            <h3 className="text-sm font-display font-bold text-white mb-4">
+                              {col.title}
+                            </h3>
+                            <div className="space-y-3 text-xs">
+                              <div>
+                                <span className="font-mono uppercase tracking-wider text-[10px] text-emerald-400 block mb-1.5">
+                                  Pros
+                                </span>
+                                <ul className="space-y-1 text-neutral-300">
+                                  {col.pros.map((pro, i) => (
+                                    <li key={i} className="flex items-start gap-2">
+                                      <span className="text-emerald-400 font-mono">+</span>
+                                      <span>{pro}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                              <div className="pt-2 border-t border-[#1e1e26]">
+                                <span className="font-mono uppercase tracking-wider text-[10px] text-neutral-500 block mb-1.5">
+                                  Cons
+                                </span>
+                                <ul className="space-y-1 text-neutral-400">
+                                  {col.cons.map((con, i) => (
+                                    <li key={i} className="flex items-start gap-2">
+                                      <span className="text-neutral-500 font-mono">&minus;</span>
+                                      <span>{con}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
             </div>
 
             {/* Key Actionable Takeaways */}
@@ -164,16 +236,27 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onOpenAudit, onOpenCalendly 
               <span className="text-xs text-neutral-400">
                 Need this deployed on your Meta or Google accounts?
               </span>
-              <button
-                onClick={() => {
-                  setReadingPost(null);
-                  onOpenCalendly();
-                }}
-                className="w-full sm:w-auto px-6 py-2.5 bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-neutral-200 transition-colors inline-flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <span>Book Strategy Session</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </button>
+              <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+                <button
+                  onClick={() => {
+                    setReadingPost(null);
+                    onOpenAudit();
+                  }}
+                  className="w-full sm:w-auto px-5 py-2.5 border border-neutral-700 text-neutral-200 hover:border-white hover:text-white font-semibold text-xs uppercase tracking-wider transition-colors cursor-pointer"
+                >
+                  Get Free Audit
+                </button>
+                <button
+                  onClick={() => {
+                    setReadingPost(null);
+                    onOpenCalendly();
+                  }}
+                  className="w-full sm:w-auto px-6 py-2.5 bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-neutral-200 transition-colors inline-flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <span>Book Strategy Session</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
