@@ -32,16 +32,22 @@ export const Footer: React.FC<FooterProps> = ({
             <div className="pt-2 flex flex-col gap-2 text-xs text-neutral-400">
               <div className="flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5 text-neutral-500 shrink-0" />
-                <span>Level 4, North Terrace, Adelaide SA 5000, Australia</span>
+                <span>{SITE_COPY.location.address}, Australia</span>
               </div>
-              <div className="flex items-center gap-2">
+              <a
+                href={`tel:${SITE_COPY.location.phone.replace(/[^+\d]/g, '')}`}
+                className="flex items-center gap-2 hover:text-white transition-colors w-fit"
+              >
                 <Phone className="w-3.5 h-3.5 text-neutral-500 shrink-0" />
-                <span>+61 (08) 8200 5590</span>
-              </div>
-              <div className="flex items-center gap-2">
+                <span>{SITE_COPY.location.phone}</span>
+              </a>
+              <a
+                href={`mailto:${SITE_COPY.location.email}`}
+                className="flex items-center gap-2 hover:text-white transition-colors w-fit"
+              >
                 <Mail className="w-3.5 h-3.5 text-neutral-500 shrink-0" />
-                <span>hello@frameandfunnel.com.au</span>
-              </div>
+                <span>{SITE_COPY.location.email}</span>
+              </a>
             </div>
           </div>
 
@@ -155,6 +161,13 @@ export const Footer: React.FC<FooterProps> = ({
                 className="w-full inline-flex items-center justify-between px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-white border border-neutral-700 hover:border-white transition-colors cursor-pointer"
               >
                 <span>Free 20-Min Audit</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </button>
+              <button
+                onClick={() => onNavigate('contact')}
+                className="w-full inline-flex items-center justify-between px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-neutral-300 border border-[#22222a] hover:border-white hover:text-white transition-colors cursor-pointer"
+              >
+                <span>Contact Studio</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </button>
               <p className="text-xs text-neutral-500 pt-1">

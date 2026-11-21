@@ -1,5 +1,17 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, ArrowRight, CheckCircle2, ShieldCheck, Clock, Calendar } from 'lucide-react';
+import {
+  Mail,
+  Phone,
+  MapPin,
+  ArrowRight,
+  CheckCircle2,
+  ShieldCheck,
+  Clock,
+  Calendar,
+  Globe,
+  Copy,
+  Check,
+} from 'lucide-react';
 import { SITE_COPY } from '../data/siteData.ts';
 
 interface ContactPageProps {
@@ -18,6 +30,13 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenCalendly, onOpen
   });
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard?.writeText(SITE_COPY.location.email);
+    setCopiedEmail(true);
+    setTimeout(() => setCopiedEmail(false), 2000);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,40 +77,93 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenCalendly, onOpen
             <p className="text-xs text-neutral-300 leading-relaxed">
               Lock in a time slot directly on our studio calendar to review your creative and paid media.
             </p>
-            <button
-              onClick={onOpenCalendly}
-              className="w-full py-3 bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-neutral-200 transition-colors inline-flex items-center justify-center gap-2 cursor-pointer"
-            >
-              <span>Launch Live Booking Calendar</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+            <div className="space-y-2.5 pt-1">
+              <button
+                onClick={onOpenCalendly}
+                className="w-full py-3 bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-neutral-200 transition-colors inline-flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <span>Launch Live Booking Calendar</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+              <button
+                onClick={onOpenAudit}
+                className="w-full py-3 border border-neutral-700 text-neutral-200 hover:border-white hover:text-white font-semibold text-xs uppercase tracking-wider transition-colors inline-flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <span>Or Request Free 20-Min Audit</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
           </div>
 
           {/* Adelaide Studio Details */}
-          <div className="p-6 bg-[#0c0c11] border border-[#202028] space-y-4">
+          <div className="p-6 bg-[#0c0c11] border border-[#202028] space-y-5">
             <span className="text-xs font-mono uppercase tracking-widest text-neutral-400 block">
-              Studio Headquarters
+              Studio Contact Information
             </span>
-            <div className="space-y-3 text-xs text-neutral-300">
-              <div className="flex items-start gap-2.5">
+            <div className="space-y-4 text-xs text-neutral-300">
+              <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-white shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-semibold text-white block">Adelaide Office</span>
-                  <span>{SITE_COPY.location.address}</span>
+                  <span className="font-semibold text-white block">Adelaide Studio</span>
+                  <span>{SITE_COPY.location.address}, Australia</span>
                 </div>
               </div>
-              <div className="flex items-start gap-2.5">
+              <div className="flex items-start gap-3">
                 <Phone className="w-4 h-4 text-white shrink-0 mt-0.5" />
                 <div>
                   <span className="font-semibold text-white block">Phone</span>
-                  <span>{SITE_COPY.location.phone}</span>
+                  <a
+                    href={`tel:${SITE_COPY.location.phone.replace(/[^+\d]/g, '')}`}
+                    className="hover:text-white transition-colors underline decoration-neutral-700 underline-offset-4"
+                  >
+                    {SITE_COPY.location.phone}
+                  </a>
                 </div>
               </div>
-              <div className="flex items-start gap-2.5">
+              <div className="flex items-start gap-3">
                 <Mail className="w-4 h-4 text-white shrink-0 mt-0.5" />
-                <div>
+                <div className="flex-1 min-w-0">
                   <span className="font-semibold text-white block">Direct Email</span>
-                  <span>{SITE_COPY.location.email}</span>
+                  <div className="flex flex-wrap items-center gap-2 mt-0.5">
+                    <a
+                      href={`mailto:${SITE_COPY.location.email}`}
+                      className="hover:text-white transition-colors underline decoration-neutral-700 underline-offset-4 truncate"
+                    >
+                      {SITE_COPY.location.email}
+                    </a>
+                    <button
+                      type="button"
+                      onClick={handleCopyEmail}
+                      className="inline-flex items-center gap-1 px-2 py-0.5 border border-[#2b2b36] hover:border-white text-[11px] font-mono text-neutral-300 hover:text-white transition-colors cursor-pointer"
+                      aria-label="Copy email address"
+                    >
+                      {copiedEmail ? (
+                        <>
+                          <Check className="w-3 h-3 text-emerald-400" />
+                          <span>Copied</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-3 h-3" />
+                          <span>Copy</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <Clock className="w-4 h-4 text-white shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-semibold text-white block">Studio Hours</span>
+                  <span>Monday – Friday, 8:30 AM – 6:00 PM ACST</span>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <Globe className="w-4 h-4 text-white shrink-0 mt-0.5" />
+                <div>
+                  <span className="font-semibold text-white block">Service Coverage</span>
+                  <span>Adelaide &amp; South Australia &middot; Australia-Wide &middot; Global E-Commerce</span>
                 </div>
               </div>
             </div>

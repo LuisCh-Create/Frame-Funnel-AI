@@ -23,6 +23,7 @@ export const Header: React.FC<HeaderProps> = ({
     { id: 'about', label: 'About' },
     { id: 'blog', label: 'Blog' },
     { id: 'audit', label: 'Free Audit' },
+    { id: 'contact', label: 'Contact' },
   ];
 
   const handleNavClick = (tabId: string) => {
@@ -45,8 +46,8 @@ export const Header: React.FC<HeaderProps> = ({
           </span>
         </button>
 
-        {/* Zone 2: 4–6 concise single-line nav links */}
-        <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-neutral-400">
+        {/* Zone 2: Concise single-line nav links */}
+        <nav className="hidden lg:flex items-center lg:gap-5 xl:gap-7 text-sm font-medium text-neutral-400">
           {navLinks.map((link) => {
             const isActive = currentTab === link.id;
             return (
